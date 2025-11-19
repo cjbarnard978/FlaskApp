@@ -1,35 +1,21 @@
-
-from flask import Flask, render_template 
-from flask import g 
-import sqlite3
-import plotly 
+from flask import Flask, render_template
+import plotly
+import plotly.express as px
 
 app = Flask(__name__)
 
-DATABASE = '/FlaskApp/scotsirishsaints.db'
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(DATABASE)
-    return db 
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
-@app.route('/localhost:5001/')
+@app.route('/')
 def index():
-    cur = get_db().cursor()
+    return render_template('index.html')
 
-CSV = 'GaelicIrelandDataFinal.csv'
+@app.route('/visualizations')
+def visualizations():
+    import pandas as pd
+    df = pd.read_csv("saints.csv")
+    fig = px.line(df, x="Name", y="Death_date", title='Death Date of Irish and Scottish Saints')
+    graph_html = fig.to_html(full_html=False)
+    return render_template('visualization.html', plot_html=graph_html)
 
-
-CSV = "saints.csv"
-import plotly.express as px
-app.route('/')
-render_template('visualization.html')
-df = px.data.gapminder().query("SaintID=='Name'")
-fig = px.line(df, x="Name", y="Death_date", title='Death Date of Irish and Scottish Saints')
-fig.show()
-
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=5001)
 
