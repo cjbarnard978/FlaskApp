@@ -1,0 +1,26 @@
+SaintID,Name,Sex,Birth_Date,Death_Date,Birth_Location,Death_Location,Death_Type
+0,,,,,,,
+1,Ninian,M,Unknown,5th c. ,Britain,Unknown,Unknown
+2,Columba,M,521,597,"Tirconnell, Donegal, Ireland","Iona, Scotland",Natural
+3,Kentigern,M,Unknown,612,"Fifeshire, Scotland","Glasgow, Scotland*",Natural
+4,Servanus,M,Unknown,6th c. ,Canaan,"Dunning, Scotland",Natural 
+5,Margaret,F,1046,1093,Hungary,"Edinburgh, Scotland",Natural
+6,Brigid,F,Unknown,525,"Leinster, Ireland","Kildare, Ireland",Natural
+7,Ite,F,Unknown,570,"Waterford, Ireland","Killeedy, Ireland",Natural
+8,Abban,M,Unknown,2nd c. ,"Leinster, Ireland",Unknown,Unknown
+9,Bairre of Cork,M,560,610,"Cork, Ireland","Cork, Ireland",Natural
+10,Berach,M,Unknown,6th/7th c. ,"Leitrim, Ireland","Cluain Coirpthe, Ireland",Natural 
+11,Ciaran of Saigher,M,5th c. ,6th c. ,West Cork,"Saighir, Ireland",Natural
+12,Coemgen,M,Unknown,618,"Glendalough, Ireland","Glendalough, Ireland",Natural
+13,Maedoc,M,Unknown,626,"Connaught, Ireland","Port na bFinnlec, Ireland",Natural
+14,Mochuda,M,Unknown,Unknown,"River Maine, Ireland","Rahen, Ireland",Natural
+15,Ruadan,M,Unknown,584,"Munster, Ireland",Unknown,Natural
+16,Darerca,F,Unknown,518,"Louth, Ireland","Armagh, Ireland",Natural
+17,Samthann,F,Unknown,739,"Ulster, Ireland","Clonbroney, Ireland",Natural
+18,Palladius,M,Unknown,5th c. ,Unknown,"Forddun, Scotland",Natural
+19,Brendan of Clonfert,M,486,575,"Munster, Ireland","Clonfert, Ireland",Natural
+20,Drostanus,M,6th c. ,7th c. ,Unknown,Unknown,Unknown
+21,Gillenius,M,Unknown,630,"Leinster, Ireland","Bobbio, Italy",Natural
+22,Colman Ela,M,560,611,"Leinster, Ireland",Ireland,Natural
+23,Adamnan,M,624,704,"Donegal, Ireland",Iona,Natural
+24,Cuthbert,M,634,687,Unknown,"Farne, England",Natural

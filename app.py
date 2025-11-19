@@ -1,8 +1,9 @@
 
-from flask import Flask
+from flask import Flask, render_template 
 from flask import g 
 import sqlite3
 import plotly 
+
 app = Flask(__name__)
 
 DATABASE = '/FlaskApp/scotsirishsaints.db'
@@ -19,7 +20,16 @@ def close_connection(exception):
 @app.route('/localhost:5001/')
 def index():
     cur = get_db().cursor()
-    
-CSV_FILE = 'GaelicIrelandDataFinal.csv'
+
+CSV = 'GaelicIrelandDataFinal.csv'
+
+
+CSV = "saints.csv"
+import plotly.express as px
+app.route('/')
+render_template('visualization.html')
+df = px.data.gapminder().query("SaintID=='Name'")
+fig = px.line(df, x="Name", y="Death_date", title='Death Date of Irish and Scottish Saints')
+fig.show()
 
 
