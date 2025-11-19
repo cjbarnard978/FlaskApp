@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>OtherColumn</th>
+  </tr>
+  {% for SaintID in Saints %}
+  <tr>
+    <td>{{ saint['Name'] }}</td>
+    <td>{{ saint['other_column'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
