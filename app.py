@@ -8,12 +8,16 @@ app = Flask(__name__)
 def index():
     return ('hello world')
 
+@app.route('/monasteries')
+def monasteries():
+    return render_template('monasteries.html')
+
 import plotly.graph_objects as go
 import pandas as pd
 df = pd.read_csv('interactivemonasterymap.csv')
-Latitude = df.lat 
-Longitude = df.lon
-monastery_info = df.text
+Latitude = df['Latitude']
+Longitude = df['Longitude']
+monastery_info = df[['Monastery', 'Monastery Type', 'Date founded', 'Founder', 'Current Status']]
 fig = go.Figure()
 fig.add_trace(go.Scattermapbox(
     lat=Latitude,
@@ -24,7 +28,13 @@ fig.add_trace(go.Scattermapbox(
         color='blue',
         opacity=0.7
     ),
-    text=monastery_info
+    customdata=monastery_info.values,
+    hovertemplate=
+        'Monastery: %{customdata[0]}<br>' +
+        'Type: %{customdata[1]}<br>' +
+        'Date Founded: %{customdata[2]}<br>' +
+        'Founder: %{customdata[3]}<br>' +
+        'Status: %{customdata[4]}<extra></extra>'
 ))
 fig.update_layout(
     title='Medieval Monasteries of the Bannatyne Club',
@@ -35,7 +45,7 @@ fig.update_layout(
         bearing=0,
         center=dict(
             lat=55.9523,
-            lon=3.1882
+            lon=-3.1882
         ),
         pitch=0,
         zoom=5,
