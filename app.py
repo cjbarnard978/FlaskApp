@@ -13,33 +13,35 @@ import pandas as pd
 df = pd.read_csv('interactivemonasterymap.csv')
 Latitude = df.lat 
 Longitude = df.lon
-'Monastery,' 'Monastery Type,' 'Date founded,' 'Founder,' 'Current Status' = df.text
+monastery_info = df.text
 fig = go.Figure()
-fig.add_trace(go.Scattermap(
+fig.add_trace(go.Scattermapbox(
     lat=Latitude,
     lon=Longitude,
-    mode='marker',
-    marker=go.scattermap.Marker(
-        size=17
-        color='blue'
+    mode='markers',
+    marker=dict(
+        size=17,
+        color='blue',
         opacity=0.7
     ),
-    text='Monastery,' 'Monastery Type,' 'Date founded,' 'Founder,' 'Current Status'
+    text=monastery_info
 ))
 fig.update_layout(
-    title=dict(text='Medieval Monasteries of the Bannatyne Club'),
+    title='Medieval Monasteries of the Bannatyne Club',
     autosize=True,
-    hovermod='closest',
+    hovermode='closest',
     showlegend=False,
-    map=dict(
+    mapbox=dict(
         bearing=0,
         center=dict(
-            lat=55.9523
+            lat=55.9523,
             lon=3.1882
         ),
         pitch=0,
         zoom=5,
-        style='topo'
+        style='open-street-map'
     ),
 )
 fig.show()
+if __name__ == '__main__':
+    app.run(debug=True)
