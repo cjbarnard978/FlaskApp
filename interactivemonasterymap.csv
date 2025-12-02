@@ -1,9 +1,9 @@
-﻿Monastery,Monastery Type,Date founded,Founder,Current Status,Latitude,Longitude,ImageURL
-Arbroath,Benedictine,c. 1178,King William of Scotland,"Ruins, managed by Historic Environment Scotland",56.5623,-2.5808,"https://www.historicenvironment.scot/media/1280/arbroath-abbey-4.jpg?rxy=0.5125,0.3311036789297659&width=800&height=480&v=1da792b7ecb7ab0"
-Dryburgh,Premonstratensian,1150,David 1 of Scotland,"Ruins, managed by Historic Environment Scotland",55.5771,-2.6495,https://www.historicenvironment.scot/media/2145/dpdry160615008.jpg?width=800&height=480&v=1da792c2285d8d0
-Dunfermline,Benedictine,"1070 (Church), 1150 (Abbey)","Margaret of Scotland, David I of Scotland","Ruins, managed by Historic Environment Scotland",56.0698,-3.4635,https://www.historicenvironment.scot/media/5188/dunfermline-abbey.png?width=800&height=480&v=1da792b997e5940
-Inchaffrey,Augustinian,c.1200,Earl Gilbert and Lady Matilda,Foundation mound remains per Gazetteer of Scotland,56.3831,-3.6955,https://upload.wikimedia.org/wikipedia/commons/2/21/Inchaffray_Abbey_Ruins_1794.JPG
-Kelso,Benedictine,1113,"David, Earl of Scotland ","Ruins, managed by Historic Environment Scotland",55.8825,-2.4316,https://upload.wikimedia.org/wikipedia/commons/f/f5/Kelso_Abbey1.jpg
-Newbattle,Cistercian,1140,David I of Scotland,Serves as home for Newbattle Abbey College,55.8825,-3.0677,https://newbattleabbey.com/wp-content/uploads/2020/04/historical-tours-scotland.jpg
-Paisley,Cluniac Reformed Benedictine,1163,Walter Steward,"Active Parish, Church of Scotland",55.8453,-4.4196,https://www.paisleyabbey.org.uk/wp-content/uploads/2021/05/Abbey-exterior-cloister-and-roses-scaled.jpg
-,,,,,,,
+﻿Monastery,Monastery Type,Date founded,Founder,Current Status,Latitude,Longitude
+Arbroath,Benedictine,c. 1178,King William of Scotland,"Ruins, managed by Historic Environment Scotland",56.5623,-2.5808
+Dryburgh,Premonstratensian,1150,David 1 of Scotland,"Ruins, managed by Historic Environment Scotland",55.5771,-2.6495
+Dunfermline,Benedictine,"1070 (Church), 1150 (Abbey)","Margaret of Scotland, David I of Scotland","Ruins, managed by Historic Environment Scotland",56.0698,-3.4635
+Inchaffrey,Augustinian,c.1200,Earl Gilbert and Lady Matilda,Foundation mound remains per Gazetteer of Scotland,56.3831,-3.6955
+Kelso,Benedictine,1113,"David, Earl of Scotland ","Ruins, managed by Historic Environment Scotland",55.8825,-2.4316
+Newbattle,Cistercian,1140,David I of Scotland,Serves as home for Newbattle Abbey College,55.8825,-3.0677
+Paisley,Cluniac Reformed Benedictine,1163,Walter Steward,"Active Parish, Church of Scotland",55.8453,-4.4196
+,,,,,,

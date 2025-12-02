@@ -44,25 +44,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var plot = document.querySelector('.js-plotly-plot');
-            var modal = document.getElementById('modal');
-            var modalDetails = document.getElementById('modal-details');
-            var closeBtn = document.getElementById('close');
             if (plot) {
                 plot.on('plotly_click', function(data) {
                     var point = data.points[0];
-                    var text = point.text;
-                    modalDetails.innerHTML = text;
-                    modal.style.display = 'block';
+                    var lat = point.lat;
+                    var lon = point.lon;
+                    var url = `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lon}`;
+                    window.open(url, '_blank');
                 });
             }
-            closeBtn.onclick = function() {
-                modal.style.display = 'none';
-            };
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            };
         });
     </script>
 </body>
