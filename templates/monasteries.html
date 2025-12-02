@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Monasteries Map</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        #modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+        #modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+        }
+        #close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Medieval Monasteries of the Bannatyne Club</h1>
+    <div id="plotly-div">{{ plot_html|safe }}</div>
+    <div id="modal">
+        <div id="modal-content">
+            <span id="close">&times;</span>
+            <div id="modal-details"></div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var plot = document.querySelector('.js-plotly-plot');
+            var modal = document.getElementById('modal');
+            var modalDetails = document.getElementById('modal-details');
+            var closeBtn = document.getElementById('close');
+            if (plot) {
+                plot.on('plotly_click', function(data) {
+                    var point = data.points[0];
+                    var text = point.text;
+                    modalDetails.innerHTML = text;
+                    modal.style.display = 'block';
+                });
+            }
+            closeBtn.onclick = function() {
+                modal.style.display = 'none';
+            };
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

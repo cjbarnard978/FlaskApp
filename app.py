@@ -10,14 +10,17 @@ def index():
 
 @app.route('/monasteries')
 def monasteries():
-    return render_template('monasteries.html')
+    import plotly.io as pio
+    plot_html = pio.to_html(fig, full_html=False)
+    return render_template('monasteries.html', plot_html=plot_html)
 
 import plotly.graph_objects as go
 import pandas as pd
 df = pd.read_csv('interactivemonasterymap.csv')
 Latitude = df['Latitude']
 Longitude = df['Longitude']
-monastery_info = df[['Monastery', 'Monastery Type', 'Date founded', 'Founder', 'Current Status']]
+monastery_info = df[['Monastery', 'Monastery Type', 'Date founded', 'Founder', 'Current Status', 'ImageURL']]
+hover_text = monastery_info.apply(lambda row: f"Monastery: {row['Monastery']}<br>Type: {row['Monastery Type']}<br>Date Founded: {row['Date founded']}<br>Founder: {row['Founder']}<br>Status: {row['Current Status']}<br><img src='{row['ImageURL']}' width='120'>", axis=1)
 fig = go.Figure()
 fig.add_trace(go.Scattermapbox(
     lat=Latitude,
@@ -28,14 +31,10 @@ fig.add_trace(go.Scattermapbox(
         color='blue',
         opacity=0.7
     ),
-    customdata=monastery_info.values,
-    hovertemplate=
-        'Monastery: %{customdata[0]}<br>' +
-        'Type: %{customdata[1]}<br>' +
-        'Date Founded: %{customdata[2]}<br>' +
-        'Founder: %{customdata[3]}<br>' +
-        'Status: %{customdata[4]}<extra></extra>'
+    text=hover_text,
+    hoverinfo='text'
 ))
+
 fig.update_layout(
     title='Medieval Monasteries of the Bannatyne Club',
     autosize=True,
