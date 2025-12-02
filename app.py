@@ -19,8 +19,8 @@ import pandas as pd
 df = pd.read_csv('interactivemonasterymap.csv')
 Latitude = df['Latitude']
 Longitude = df['Longitude']
-monastery_info = df[['Monastery', 'Monastery Type', 'Date founded', 'Founder', 'Current Status', 'ImageURL']]
-hover_text = monastery_info.apply(lambda row: f"Monastery: {row['Monastery']}<br>Type: {row['Monastery Type']}<br>Date Founded: {row['Date founded']}<br>Founder: {row['Founder']}<br>Status: {row['Current Status']}<br><img src='{row['ImageURL']}' width='120'>", axis=1)
+monastery_info = df[['Monastery', 'Monastery Type', 'Date founded', 'Founder', 'Current Status']]
+hover_text = monastery_info.apply(lambda row: f"Monastery: {row['Monastery']}<br>Type: {row['Monastery Type']}<br>Date Founded: {row['Date founded']}<br>Founder: {row['Founder']}<br>Status: {row['Current Status']}", axis=1)
 fig = go.Figure()
 fig.add_trace(go.Scattermapbox(
     lat=Latitude,
