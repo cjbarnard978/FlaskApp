@@ -34,7 +34,6 @@ fig.add_trace(go.Scattermapbox(
     text=hover_text,
     hoverinfo='text'
 ))
-
 fig.update_layout(
     title='Medieval Monasteries of the Bannatyne Club',
     autosize=True,
@@ -51,6 +50,6 @@ fig.update_layout(
         style='open-street-map'
     ),
 )
-fig.show()
+
 if __name__ == '__main__':
     app.run(debug=True)
