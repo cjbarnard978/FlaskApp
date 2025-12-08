@@ -1,79 +1,92 @@
+# New route for county and province choropleth maps
+@app.route('/saint_choropleths')
+def saint_choropleths():
+    import plotly.io as pio
+    import pandas as pd
+    import json
+    df = pd.read_csv('saintbirthlocationmap.csv')
+    with open('gb.json', 'r') as f:
+        counties_geojson = json.load(f)
+    with open('Province_Boundaries_Generalised_50m_-4507604732527992184.geojson', 'r') as f:
+        provinces_geojson = json.load(f)
+
+    # County choropleth
+    birth_counts = df['Birth Region'].value_counts().reset_index()
+    birth_counts.columns = ['county', 'count']
+    fig_county = pio.to_html(px.choropleth_mapbox(
+        birth_counts,
+        geojson=counties_geojson,
+        locations='county',
+        color='count',
+        featureidkey='properties.NAME',
+        mapbox_style='open-street-map',
+        center={'lat': 55, 'lon': -3},
+        zoom=4,
+        title='Saints Births by County'
+    ), full_html=False)
+
+    # Province choropleth
+    birth_prov_counts = df['Birth Country'].value_counts().reset_index()
+    birth_prov_counts.columns = ['province', 'count']
+    fig_province = pio.to_html(px.choropleth_mapbox(
+        birth_prov_counts,
+        geojson=provinces_geojson,
+        locations='province',
+        color='count',
+        featureidkey='properties.NAME',
+        mapbox_style='open-street-map',
+        center={'lat': 55, 'lon': -3},
+        zoom=4,
+        title='Saints Births by Province'
+    ), full_html=False)
+
+    return render_template('saint_choropleths.html', county_html=fig_county, province_html=fig_province)
 from flask import Flask, render_template
-import plotly
-import plotly.express as px
-
-
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return ('hello world')
-
-
-# New route for heatmaps
 
 @app.route('/saint_heatmaps')
-
 def saint_heatmaps():
     import plotly.io as pio
     import pandas as pd
-    import os
-    from geopy.geocoders import Nominatim
-    from geopy.extra.rate_limiter import RateLimiter
+    import json
+    df = pd.read_csv('saintbirthlocationmap.csv')
+    with open('gb.json', 'r') as f:
+        counties_geojson = json.load(f)
 
-    cache_file = 'saintbirthlocationmap_geocoded.csv'
-    if os.path.exists(cache_file):
-        df = pd.read_csv(cache_file)
-    else:
-        df = pd.read_csv('saintbirthlocationmap.csv')
-        geolocator = Nominatim(user_agent="saint_geocoder")
-        geocode = RateLimiter(geolocator.geocode, min_delay_seconds=1)
+    # Birth county choropleth
+    birth_counts = df['Birth Region'].value_counts().reset_index()
+    birth_counts.columns = ['county', 'count']
 
-        def build_location(row, prefix):
-            parts = [row.get(f"{prefix} Location: Specific", ""), row.get(f"{prefix} Region", ""), row.get(f"{prefix} Country", "")]
-            return ', '.join([str(p).strip() for p in parts if pd.notnull(p) and str(p).strip().lower() != 'null' and str(p).strip() != ''])
-
-        df['Birth Location Query'] = df.apply(lambda row: build_location(row, 'Birth'), axis=1)
-        df['Death Location Query'] = df.apply(lambda row: build_location(row, 'Death'), axis=1)
-
-        df['Birth Latitude'] = None
-        df['Birth Longitude'] = None
-        df['Death Latitude'] = None
-        df['Death Longitude'] = None
-
-        for idx, row in df.iterrows():
-            # Birth location
-            loc = row['Birth Location Query']
-            if loc:
-                location = geocode(loc)
-                if location:
-                    df.at[idx, 'Birth Latitude'] = location.latitude
-                    df.at[idx, 'Birth Longitude'] = location.longitude
-            # Death location
-            loc = row['Death Location Query']
-            if loc:
-                location = geocode(loc)
-                if location:
-                    df.at[idx, 'Death Latitude'] = location.latitude
-                    df.at[idx, 'Death Longitude'] = location.longitude
-
-        df.to_csv(cache_file, index=False)
-
-    # Drop rows without coordinates
-    birth_df = df.dropna(subset=['Birth Latitude', 'Birth Longitude'])
-    death_df = df.dropna(subset=['Death Latitude', 'Death Longitude'])
-
-    fig_birth = px.density_mapbox(
-        birth_df,
-        lat='Birth Latitude',
-        lon='Birth Longitude',
-        radius=10,
-        center=dict(lat=55, lon=-3),
-        zoom=4,
+    fig_birth = px.choropleth_mapbox(
+        birth_counts,
+        geojson=counties_geojson,
+        locations='county',
+        color='count',
+        featureidkey='properties.NAME',  # Adjust if needed
         mapbox_style='open-street-map',
-        title='Saints Birth Locations Density Map'
+        center={'lat': 55, 'lon': -3},
+        zoom=4,
+        title='Saints Births by County'
     )
 
+    # Death county choropleth
+    death_counts = df['Death Region'].value_counts().reset_index()
+    death_counts.columns = ['county', 'count']
+
+    fig_death = px.choropleth_mapbox(
+        death_counts,
+        geojson=counties_geojson,
+        locations='county',
+        color='count',
+        featureidkey='properties.NAME',  # Adjust if needed
+        mapbox_style='open-street-map',
+        center={'lat': 55, 'lon': -3},
+        zoom=4,
+        title='Saints Deaths by County'
+    )
+
+    birth_html = pio.to_html(fig_birth, full_html=False)
+    death_html = pio.to_html(fig_death, full_html=False)
+    return render_template('saint_heatmaps.html', birth_html=birth_html, death_html=death_html)
     fig_death = px.density_mapbox(
         death_df,
         lat='Death Latitude',
