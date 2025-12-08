@@ -1,0 +1,8 @@
+import pandas as pd
+# Read the CSV
+csv_path = 'saintbirthlocationmap.csv'
+df = pd.read_csv(csv_path)
+# Save as Excel
+excel_path = 'saintbirthlocationmap.xlsx'
+df.to_excel(excel_path, index=False)
+print(f'Excel file saved as {excel_path}')
