@@ -1,22 +1,18 @@
-﻿Saint,Birth Location: Specific,Birth Region,Birth Country,Latitude,Longitude
-Ninian,null,Britain,Britain,,
-Columba,Donegal,Ulster,Ireland,,
-Kentigern,null,Fifeshire,Scotland,,
-Servanus,null,Israel,Israel,,
-Margaret,null,Hungary,Hungary,,
-Brigid,Uinmeras,Leinster,Ireland,,
-Ite,Waterford,Munster,Ireland,,
-Abban,null,Leinster,Ireland,,
-Bairre of Cork,Cork,Munster,Ireland,,
-Berach,Leitrim,Connaught,Ireland,,
-Ciaran of Saigher,West Cork,Munster,Ireland,,
-Coemgen,Glendalough,Leinster,Ireland,,
-Maedoc,null,Connaught,Ireland,,
-Mochuda,River Maine,Ulster,Ireland,,
-Ruadan,null,Munster,Ireland,,
-Darerca,Louth,Leinster,Ireland,,
-Samthann,null,Ulster,Ireland,,
-Brendan of Clonfert,null,Munster,Ireland,,
-Gillenius,null,Leinster,Ireland,,
-Colman Ela,null,Leinster,Ireland,,
-Adamnan,Donegal,Ulster,Ireland,,
+﻿Saint,Birth Location-Specific,Birth-Region,Birth-Country,Birth_Latitude,Birth_ Longitude,Death Location-Specific,Death_Region,Death_Country,Death_Latitude,Death_Longitude
+Columba,Donegal,Ulster,Ireland,"54.653603 	",-8.110714,Iona,Argyllshire,Scotland,56.331408,-6.41522
+Kentigern,null,Fifeshire,Scotland,56.333007,-2.998627,Glasgow,Lanarkshire,Scotland,55.863206,-4.23687
+Servanus,null,Israel,Israel,31.976517,34.984711,Dunning,Perthshire,Scotland,56.312455,-3.58804
+Margaret,null,Hungary,Hungary,47.173307,19.413545,Edinburgh,Midlothian,Scotland,55.953661,-3.189794
+Brigid,Uinmeras,Leinster,Ireland,53.159971,-6.908311,Kildare,Leinster,Ireland,53.159971,-6.908311
+Ite,Waterford,Munster,Ireland,52.259658,-7.108294,Killeedy,Munster,Ireland,52.384232,-9.07444
+Bairre of Cork,Cork,Munster,Ireland,51.8979,-8.469923,Cork,Munster,Ireland,51.8979,-8.469923
+Berach,Leitrim,Connaught,Ireland,54.137474,-8.019942,Cluian Coirpthe,Connaught,Ireland,53.772589,-7.891818
+Ciaran of Saigher,West Cork,Munster,Ireland,51.55128,-9.270779,Saighir,Leinster,Ireland,53.034942,-7.799226
+Coemgen,Glendalough,Leinster,Ireland,53.012027,-6.329039,Glendalough,Leinster,Ireland,53.012027,-6.329039
+Maedoc,null,Connaught,Ireland,53.865675,-8.627837,Port na Bfinnlec,Leinster,Ireland,52.591246,-6.497654
+Mochuda,River Maine,Ulster,Ireland,54.925377,-7.928514,Lismore,Munster,Ireland,52.136605,-7.930787
+Darerca,Louth,Leinster,Ireland,53.912315,-6.409257,Armagh,Ulster,Ireland,54.347505,-6.65628
+Samthann,null,Ulster,Ireland,54.925377,-7.928514,Clonbroney,Leinster,Ireland,53.750697,-7.612627
+Brendan of Clonfert,null,Munster,Ireland,52.334834,-8.71667,Clonfert,Connaught,Irelnad,52.210436,-9.012073
+Gillenius,null,Leinster,Ireland,"53.1665 	",-7.010224,Bobbio,Umbria,Italy,44.771268,9.386407
+Adamnan,Donegal,Ulster,Ireland,54.925377,-7.928514,Iona,Argyllshire,Scotland,56.331408,-6.41522
