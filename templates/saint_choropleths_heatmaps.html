@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saints Choropleths & Heatmaps</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Saints Births by County & Province (Choropleth)</h1>
+    <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+        <div style="flex: 1; min-width: 400px;">
+            <h2>By County</h2>
+            {{ birth_html|safe }}
+        </div>
+        <div style="flex: 1; min-width: 400px;">
+            <h2>By Province</h2>
+            {{ province_html|safe }}
+        </div>
+    </div>
+    <hr>
+    <h1>Saints Deaths by County (Choropleth)</h1>
+    <div>{{ death_html|safe }}</div>
+    <!-- If you want to add heatmaps, uncomment below and pass the variables from Flask -->
+    {#
+    <hr>
+    <h1>Saints Birth Locations Density Heatmap</h1>
+    <div>{{ birth_heatmap_html|safe }}</div>
+    <hr>
+    <h1>Saints Death Locations Density Heatmap</h1>
+    <div>{{ death_heatmap_html|safe }}</div>
+    #}
+</body>
+</html>
