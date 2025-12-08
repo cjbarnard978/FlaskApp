@@ -1,3 +1,8 @@
+from flask import Flask, render_template
+import plotly.express as px
+
+app = Flask(__name__)
+
 # New route for county and province choropleth maps
 @app.route('/saint_choropleths')
 def saint_choropleths():
@@ -42,65 +47,6 @@ def saint_choropleths():
 
     return render_template('saint_choropleths.html', county_html=fig_county, province_html=fig_province)
 from flask import Flask, render_template
-
-@app.route('/saint_heatmaps')
-def saint_heatmaps():
-    import plotly.io as pio
-    import pandas as pd
-    import json
-    df = pd.read_csv('saintbirthlocationmap.csv')
-    with open('gb.json', 'r') as f:
-        counties_geojson = json.load(f)
-
-    # Birth county choropleth
-    birth_counts = df['Birth Region'].value_counts().reset_index()
-    birth_counts.columns = ['county', 'count']
-
-    fig_birth = px.choropleth_mapbox(
-        birth_counts,
-        geojson=counties_geojson,
-        locations='county',
-        color='count',
-        featureidkey='properties.NAME',  # Adjust if needed
-        mapbox_style='open-street-map',
-        center={'lat': 55, 'lon': -3},
-        zoom=4,
-        title='Saints Births by County'
-    )
-
-    # Death county choropleth
-    death_counts = df['Death Region'].value_counts().reset_index()
-    death_counts.columns = ['county', 'count']
-
-    fig_death = px.choropleth_mapbox(
-        death_counts,
-        geojson=counties_geojson,
-        locations='county',
-        color='count',
-        featureidkey='properties.NAME',  # Adjust if needed
-        mapbox_style='open-street-map',
-        center={'lat': 55, 'lon': -3},
-        zoom=4,
-        title='Saints Deaths by County'
-    )
-
-    birth_html = pio.to_html(fig_birth, full_html=False)
-    death_html = pio.to_html(fig_death, full_html=False)
-    return render_template('saint_heatmaps.html', birth_html=birth_html, death_html=death_html)
-    fig_death = px.density_mapbox(
-        death_df,
-        lat='Death Latitude',
-        lon='Death Longitude',
-        radius=10,
-        center=dict(lat=55, lon=-3),
-        zoom=4,
-        mapbox_style='open-street-map',
-        title='Saints Death Locations Density Map'
-    )
-
-    birth_html = pio.to_html(fig_birth, full_html=False)
-    death_html = pio.to_html(fig_death, full_html=False)
-    return render_template('saint_heatmaps.html', birth_html=birth_html, death_html=death_html)
 
 import plotly.graph_objects as go
 import pandas as pd
