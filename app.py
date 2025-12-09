@@ -3,14 +3,20 @@ import plotly.graph_objects as go
 import pandas as pd
 
 app = Flask(__name__)
+@app.route('/home')
+def home():
+    return render_template('home.html')
 
-@app.route('/saints')
-def saints():
+# Combined saints visualizations route
+@app.route('/thesaints')
+def saints_combined():
     import pandas as pd
     import plotly.graph_objects as go
-    saints = pd.read_csv('SaintBirths.csv')
+    import plotly.express as px
+    df = pd.read_csv('SaintBirths.csv')
+    # Saint lines map
     fig = go.Figure()
-    for _, row in saints.iterrows():
+    for _, row in df.iterrows():
         if pd.notna(row['Birth_Latitude']) and pd.notna(row['Death_Latitude']) and pd.notna(row['Birth_ Longitude']) and pd.notna(row['Death_Longitude']):
             fig.add_trace(go.Scattermapbox(
                 mode = "lines",
@@ -29,13 +35,7 @@ def saints():
         title = "Saints' Birth to Death Locations"
     )
     saint_lines_html = fig.to_html(full_html=False)
-    return render_template('saint_lines.html', saint_lines_html=saint_lines_html)
-
-@app.route('/saints_bar_charts')
-def saints_bar_charts():
-    import plotly.express as px
-    import pandas as pd
-    df = pd.read_csv('SaintBirths.csv')
+    # Bar charts
     birth_counts = df['Birth-Region'].value_counts().reset_index()
     birth_counts.columns = ['Birth-Region', 'Count']
     births_fig = px.bar(birth_counts, x='Birth-Region', y='Count', title='Saint Births by Region', text='Count')
@@ -45,10 +45,10 @@ def saints_bar_charts():
     death_counts.columns = ['Death_Region', 'Count']
     deaths_fig = px.bar(death_counts, x='Death_Region', y='Count', title='Saint Deaths by Region', text='Count')
     deaths_fig.update_traces(textposition='outside')
-    deaths_fig.update_yaxes(range=[0, 5])
+    deaths_fig.update_yaxes(range=[0, 6])
     births_bar_html = births_fig.to_html(full_html=False)
     deaths_bar_html = deaths_fig.to_html(full_html=False)
-    return render_template('saints_bar_charts.html', births_pie_html=births_bar_html, deaths_pie_html=deaths_bar_html)
+    return render_template('saints_combined.html', saint_lines_html=saint_lines_html, births_pie_html=births_bar_html, deaths_pie_html=deaths_bar_html)
 
 @app.route('/monasteries')
 def monasteries():
@@ -64,7 +64,7 @@ def monasteries():
         mode='markers',
         marker=dict(
             size=17,
-            color='blue',
+            color='red',
             opacity=0.7
         ),
         text=hover_text,
@@ -82,7 +82,7 @@ def monasteries():
                 lon=-3.1882
             ),
             pitch=0,
-            zoom=5,
+            zoom=7,
             style='open-street-map'
         ),
     )

@@ -3,24 +3,33 @@
 <head>
     <title>Medieval Monasteries of the Bannatyne Club</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    /* Optional: Add custom styles here */
-            cursor: pointer;
+    <style>
+        #monastery-map {
+            width: 800px;
+            height: 800px;
+            margin: 0 auto;
         }
     </style>
 </head>
 <body>
     <h1>Medieval Monasteries of the Bannatyne Club</h1>
-    <div id="plotly-div">{{ plot_html|safe }}</div>
-    <div id="modal">
-        <div id="modal-content">
-            <span id="close">&times;</span>
-            <div id="modal-details"></div>
-        <body>
-            <h1>Medieval Monasteries of the Bannatyne Club</h1>
-            <div>{{ monastery_html|safe }}</div>
-        </body>
-            }
-        });
-    </script>
+    <div id="monastery-map">{{ monastery_html|safe }}</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medieval Monasteries of the Bannatyne Club</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        #monastery-map {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 1 / 1;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Medieval Monasteries of the Bannatyne Club</h1>
+    <div id="monastery-map">{{ monastery_html|safe }}</div>
 </body>
 </html>

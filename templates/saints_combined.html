@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Saints Births and Deaths by Region</title>
+    <title>Saints Visualizations</title>
 </head>
 <body>
-    <h1>Saints Births and Deaths by Region</h1>
+    <h1>Saints Visualizations</h1>
     <div>
         <h2>Births by Region</h2>
         {{ births_pie_html|safe }}
@@ -13,5 +13,8 @@
         <h2>Deaths by Region</h2>
         {{ deaths_pie_html|safe }}
     </div>
+    <hr>
+    <h2>Saints Birth to Death Locations</h2>
+    {{ saint_lines_html|safe }}
 </body>
 </html>
