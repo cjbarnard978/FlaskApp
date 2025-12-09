@@ -4,8 +4,8 @@ import pandas as pd
 
 app = Flask(__name__)
 
-@app.route('/saint_lines')
-def saint_lines():
+@app.route('/saints')
+def saints():
     import pandas as pd
     import plotly.graph_objects as go
     saints = pd.read_csv('SaintBirths.csv')
@@ -31,6 +31,21 @@ def saint_lines():
     saint_lines_html = fig.to_html(full_html=False)
     return render_template('saint_lines.html', saint_lines_html=saint_lines_html)
 
+@app.route('/saint_pies')
+def saints():
+    import plotly.express as px
+    df = pd.read_csv('SaintBirths.csv')
+    df = px.data.tips()
+    fig = px.pie(df, values='Birth_Region', names='Birth_Region', title = 'Saint Births by Region')
+    fig.show()
+    saint_pie_html = fig.to_html(full_html=False)
+
+    df = pd.read_csv('SaintBirths.csv')
+    df = px.data.tips()
+    fig = px.pie(df, values='Death_Region', names='Death_Region',title = 'Saint Deaths by Region')
+    fig.show()
+    saint_death_pie_html = fig.to_html(full_html=False)
+    return render_template('saint_pies.html', saint_pie_html=saint_pie_html, saint_death_pie_html=saint_death_pie_html)
 
 @app.route('/monasteries')
 def monasteries():
