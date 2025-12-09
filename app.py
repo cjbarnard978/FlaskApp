@@ -31,22 +31,24 @@ def saints():
     saint_lines_html = fig.to_html(full_html=False)
     return render_template('saint_lines.html', saint_lines_html=saint_lines_html)
 
-@app.route('/saints_pie_charts')
-def saints_pie_charts():
+@app.route('/saints_bar_charts')
+def saints_bar_charts():
     import plotly.express as px
     import pandas as pd
     df = pd.read_csv('SaintBirths.csv')
-    birth_counts = df['Birth_Region'].value_counts().reset_index()
-    birth_counts.columns = ['Birth_Region', 'Count']
-    births_fig = px.bar(birth_counts, x='Birth_Region', y='Count', title='Saint Births by Region (Count)', text='Count')
+    birth_counts = df['Birth-Region'].value_counts().reset_index()
+    birth_counts.columns = ['Birth-Region', 'Count']
+    births_fig = px.bar(birth_counts, x='Birth-Region', y='Count', title='Saint Births by Region', text='Count')
     births_fig.update_traces(textposition='outside')
+    births_fig.update_yaxes(range=[0, 5])
     death_counts = df['Death_Region'].value_counts().reset_index()
     death_counts.columns = ['Death_Region', 'Count']
-    deaths_fig = px.bar(death_counts, x='Death_Region', y='Count', title='Saint Deaths by Region (Count)', text='Count')
+    deaths_fig = px.bar(death_counts, x='Death_Region', y='Count', title='Saint Deaths by Region', text='Count')
     deaths_fig.update_traces(textposition='outside')
+    deaths_fig.update_yaxes(range=[0, 5])
     births_bar_html = births_fig.to_html(full_html=False)
     deaths_bar_html = deaths_fig.to_html(full_html=False)
-    return render_template('saints_pie_charts.html', births_pie_html=births_bar_html, deaths_pie_html=deaths_bar_html)
+    return render_template('saints_bar_charts.html', births_pie_html=births_bar_html, deaths_pie_html=deaths_bar_html)
 
 @app.route('/monasteries')
 def monasteries():
