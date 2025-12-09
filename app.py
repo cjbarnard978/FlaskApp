@@ -1,4 +1,4 @@
-from flask import Flask, 
+from flask import Flask, render_template
 import plotly.graph_objects as go
 import pandas as pd
 
@@ -36,11 +36,17 @@ def saints_pie_charts():
     import plotly.express as px
     import pandas as pd
     df = pd.read_csv('SaintBirths.csv')
-    births_fig = px.pie(df, names='Birth_Region', title='Saint Births by Region')
-    deaths_fig = px.pie(df, names='Death_Region', title='Saint Deaths by Region')
-    births_pie_html = births_fig.to_html(full_html=False)
-    deaths_pie_html = deaths_fig.to_html(full_html=False)
-    return render_template('saints_pie_charts.html', births_pie_html=births_pie_html, deaths_pie_html=deaths_pie_html)
+    birth_counts = df['Birth_Region'].value_counts().reset_index()
+    birth_counts.columns = ['Birth_Region', 'Count']
+    births_fig = px.bar(birth_counts, x='Birth_Region', y='Count', title='Saint Births by Region (Count)', text='Count')
+    births_fig.update_traces(textposition='outside')
+    death_counts = df['Death_Region'].value_counts().reset_index()
+    death_counts.columns = ['Death_Region', 'Count']
+    deaths_fig = px.bar(death_counts, x='Death_Region', y='Count', title='Saint Deaths by Region (Count)', text='Count')
+    deaths_fig.update_traces(textposition='outside')
+    births_bar_html = births_fig.to_html(full_html=False)
+    deaths_bar_html = deaths_fig.to_html(full_html=False)
+    return render_template('saints_pie_charts.html', births_pie_html=births_bar_html, deaths_pie_html=deaths_bar_html)
 
 @app.route('/monasteries')
 def monasteries():
