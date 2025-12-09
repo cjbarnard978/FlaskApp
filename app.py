@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, 
 import plotly.graph_objects as go
 import pandas as pd
 
@@ -23,7 +23,7 @@ def saints():
         mapbox = dict(
             style = "open-street-map",
             center = dict(lat=54, lon=-3),
-            zoom = 4
+            zoom = 3
         ),
         showlegend = True,
         title = "Saints' Birth to Death Locations"
@@ -31,21 +31,16 @@ def saints():
     saint_lines_html = fig.to_html(full_html=False)
     return render_template('saint_lines.html', saint_lines_html=saint_lines_html)
 
-@app.route('/saint_pies')
-def saints():
+@app.route('/saints_pie_charts')
+def saints_pie_charts():
     import plotly.express as px
+    import pandas as pd
     df = pd.read_csv('SaintBirths.csv')
-    df = px.data.tips()
-    fig = px.pie(df, values='Birth_Region', names='Birth_Region', title = 'Saint Births by Region')
-    fig.show()
-    saint_pie_html = fig.to_html(full_html=False)
-
-    df = pd.read_csv('SaintBirths.csv')
-    df = px.data.tips()
-    fig = px.pie(df, values='Death_Region', names='Death_Region',title = 'Saint Deaths by Region')
-    fig.show()
-    saint_death_pie_html = fig.to_html(full_html=False)
-    return render_template('saint_pies.html', saint_pie_html=saint_pie_html, saint_death_pie_html=saint_death_pie_html)
+    births_fig = px.pie(df, names='Birth_Region', title='Saint Births by Region')
+    deaths_fig = px.pie(df, names='Death_Region', title='Saint Deaths by Region')
+    births_pie_html = births_fig.to_html(full_html=False)
+    deaths_pie_html = deaths_fig.to_html(full_html=False)
+    return render_template('saints_pie_charts.html', births_pie_html=births_pie_html, deaths_pie_html=deaths_pie_html)
 
 @app.route('/monasteries')
 def monasteries():
