@@ -3,18 +3,26 @@
 <head>
     <title>Saints Visualizations</title>
 </head>
-<body>
-    <h1>Saints Visualizations</h1>
-    <div>
-        <h2>Births by Region</h2>
-        {{ births_pie_html|safe }}
-    </div>
-    <div>
-        <h2>Deaths by Region</h2>
-        {{ deaths_pie_html|safe }}
-    </div>
-    <hr>
-    <h2>Saints Birth to Death Locations</h2>
-    {{ saint_lines_html|safe }}
+<body>>
+        <div class="carousel rounded-box w-full" style="max-width: 900px; margin: 0 auto;">
+            <div class="carousel-item w-full" style="padding: 2rem;">
+                <div class="card bg-base-300 rounded-box grid grow place-items-center" style="padding: 1rem;">
+                    <h2>Births by Region</h2>
+                    {{ births_pie_html|safe }}
+                </div>
+            </div>
+            <div class="carousel-item w-full" style="padding: 2rem;">
+                <div class="card bg-base-300 rounded-box grid grow place-items-center" style="padding: 1rem;">
+                    <h2>Deaths by Region</h2>
+                    {{ deaths_pie_html|safe }}
+                </div>
+            </div>
+            <div class="carousel-item w-full" style="padding: 2rem;">
+                <div class="card bg-base-300 rounded-box grid grow place-items-center" style="padding: 1rem;">
+                    <h2>Saints Birth to Death Locations</h2>
+                    {{ saint_lines_html|safe }}
+                </div>
+            </div>
+        </div>
 </body>
 </html>
