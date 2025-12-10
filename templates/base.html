@@ -28,7 +28,7 @@
             padding-bottom: 10px;
         }
         .nav-link {
-            color: white;
+            color: black;
             font-weight: bold;
             margin-right: 15px;
         }
@@ -39,7 +39,8 @@
             color:black;
         }
         body {
-          font-family:'Gothic A1', sans-serif;
+          font-family:'Cormorant Unicase', serif;
+          background-color: linen;
         }
         head {
             font-family: 'Cormorant Unicase', serif;
@@ -49,4 +50,16 @@
             color: black; 
         }
     </style>
+<!-- Example base.html structure -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- ...head content... -->
+  </head>
+  <body>
+    <!-- Navigation, header, etc. -->
+    {% block content %}{% endblock %}
+    <!-- Footer, scripts, etc. -->
+  </body>
+</html>
 </DOCTYPE>

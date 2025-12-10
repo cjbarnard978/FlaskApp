@@ -1,21 +1,7 @@
-{% extends "base.html" %}
 
+{% extends "base.html" %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Medieval Monasteries of the Bannatyne Club</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <style>
-        #monastery-map {
-            width: 800px;
-            height: 1600px;
-            margin: 0 auto;
-        }
-    </style>
-</head>
-<body>
-    <div id="monastery-map">{{ monastery_html|safe }}</div>
-</body>
-</html>
+<div id="monastery-map" style="width: 800px; height: 1600px; margin: 0 auto;">
+    {{ monastery_html|safe }}
+</div>
 {% endblock %}

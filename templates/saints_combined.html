@@ -1,33 +1,16 @@
-{% extends "base.html" %}
 
+{% extends "base.html" %}
 {% block content %}
-<!DOCTYPE html>
-<html>
-<head>
-        <title>Saints Visualizations</title>
-        <!-- Tailwind CSS CDN -->
-        <script src="https://cdn.tailwindcss.com"></script>
-        <!-- daisyUI CDN (via Tailwind config) -->
-        <script>
-            tailwind.config = {
-                theme: {},
-                plugins: [daisyui],
-            }
-        </script>
-</head>
-<body>>
-    <div style="margin-bottom: 2rem;">
-        <h2>Births by Region</h2>
-        {{ births_pie_html|safe }}
-    </div>
-    <div style="margin-bottom: 2rem;">
-        <h2>Deaths by Region</h2>
-        {{ deaths_pie_html|safe }}
-    </div>
-    <div style="margin-bottom: 2rem;">
-        <h2>Saints Birth to Death Locations</h2>
-        {{ saint_lines_html|safe }}
-    </div>
-</body>
-</html>
+<div style="margin-bottom: 2rem;">
+    <h2>Births by Region</h2>
+    {{ births_pie_html|safe }}
+</div>
+<div style="margin-bottom: 2rem;">
+    <h2>Deaths by Region</h2>
+    {{ deaths_pie_html|safe }}
+</div>
+<div style="margin-bottom: 2rem;">
+    <h2>Saints Birth to Death Locations</h2>
+    {{ saint_lines_html|safe }}
+</div>
 {% endblock %}
