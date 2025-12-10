@@ -1,16 +1,36 @@
 
 {% extends "base.html" %}
 {% block content %}
-<div style="margin-bottom: 2rem;">
-    <h2>Births by Region</h2>
-    {{ births_pie_html|safe }}
-</div>
-<div style="margin-bottom: 2rem;">
-    <h2>Deaths by Region</h2>
-    {{ deaths_pie_html|safe }}
-</div>
-<div style="margin-bottom: 2rem;">
-    <h2>Saints Birth to Death Locations</h2>
-    {{ saint_lines_html|safe }}
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 2rem;">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2rem; min-height: 70vh;">
+                <h2 class="mb-4 text-center">The Migration of Early Saints</h2>
+                <div class="w-100 d-flex justify-content-center">
+                    {{ saint_lines_html|safe }}
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2rem; min-height: 70vh;">
+                <h2 class="mb-4 text-center">Births by Region</h2>
+                <div class="w-100 d-flex justify-content-center">
+                    {{ births_pie_html|safe }}
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2rem; min-height: 70vh;">
+                <h2 class="mb-4 text-center">Deaths by Region</h2>
+                <div class="w-100 d-flex justify-content-center">
+                    {{ deaths_pie_html|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next" style="right: 2%;">
+        <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #222; border-radius: 50%;"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
 {% endblock %}
