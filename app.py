@@ -14,16 +14,62 @@ def saints_combined():
     import plotly.graph_objects as go
     import plotly.express as px
     df = pd.read_csv('SaintBirths.csv')
-    # Saint lines map
+    # Saint lines map with birth/death markers
     fig = go.Figure()
+    # Add legend entries for birth and death markers
+    # Add a single birth and death marker for legend
+    fig.add_trace(go.Scattermapbox(
+        mode = "markers",
+        lon = [None],
+        lat = [None],
+        marker = dict(size=10, color='red'),
+        name = "Birth (red)",
+        showlegend=True,
+        hoverinfo='skip'
+    ))
+    fig.add_trace(go.Scattermapbox(
+        mode = "markers",
+        lon = [None],
+        lat = [None],
+        marker = dict(size=10, color='black'),
+        name = "Death (black)",
+        showlegend=True,
+        hoverinfo='skip'
+    ))
     for _, row in df.iterrows():
         if pd.notna(row['Birth_Latitude']) and pd.notna(row['Death_Latitude']) and pd.notna(row['Birth_ Longitude']) and pd.notna(row['Death_Longitude']):
+            # Line connecting birth and death
             fig.add_trace(go.Scattermapbox(
                 mode = "lines",
                 lon = [float(row['Birth_ Longitude']), float(row['Death_Longitude'])],
                 lat = [float(row['Birth_Latitude']), float(row['Death_Latitude'])],
                 line = dict(width=2, color='blue'),
-                name = row['Saint']
+                name = row['Saint'],
+                showlegend=True,
+                hoverinfo='text',
+                text=f"{row['Saint']}"
+            ))
+            # Birth marker (red), legend hidden
+            fig.add_trace(go.Scattermapbox(
+                mode = "markers",
+                lon = [float(row['Birth_ Longitude'])],
+                lat = [float(row['Birth_Latitude'])],
+                marker = dict(size=10, color='red'),
+                name = f"Birth: {row['Saint']}",
+                showlegend=False,
+                hoverinfo='text',
+                text=f"Birth: {row['Saint']}"
+            ))
+            # Death marker (black), legend hidden
+            fig.add_trace(go.Scattermapbox(
+                mode = "markers",
+                lon = [float(row['Death_Longitude'])],
+                lat = [float(row['Death_Latitude'])],
+                marker = dict(size=10, color='black'),
+                name = f"Death: {row['Saint']}",
+                showlegend=False,
+                hoverinfo='text',
+                text=f"Death: {row['Saint']}"
             ))
     fig.update_layout(
         mapbox = dict(
@@ -32,7 +78,7 @@ def saints_combined():
             zoom = 3
         ),
         showlegend = True,
-        title = "Saints' Birth to Death Locations"
+        title = "Migration of Irish and Scottish Saints"
     )
     saint_lines_html = fig.to_html(full_html=False)
     # Bar charts
@@ -71,7 +117,7 @@ def monasteries():
         hoverinfo='text'
     ))
     fig.update_layout(
-        title='Medieval Monasteries of the Bannatyne Club',
+        title='',
         autosize=True,
         hovermode='closest',
         showlegend=False,
