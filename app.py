@@ -128,7 +128,7 @@ def monasteries():
                 lon=-3.1882
             ),
             pitch=0,
-            zoom=7,
+            zoom=3,
             style='open-street-map'
         ),
     )
