@@ -117,7 +117,7 @@ def monasteries():
         hoverinfo='text'
     ))
     fig.update_layout(
-        title='',
+        title='Seven 12th Century Scottish Monasteries',
         autosize=True,
         hovermode='closest',
         showlegend=False,

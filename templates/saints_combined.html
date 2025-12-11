@@ -1,28 +1,34 @@
 
 {% extends "base.html" %}
 {% block content %}
-<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 2rem;">
+<div class="d-flex justify-content-start" style="margin-bottom: 2rem;">
+    <div style="background-color: linen; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 1.5rem 2rem; max-width: 420px;">
+        <h4 class="mb-2">What You See</h4>
+        <p style="margin-bottom: 0;">Click on a saint to compare their place of birth and place of death. Consider the difference in distance traveled between male saints and female saints. To see a statistical breakdown of birth and death regions, click the arrow on the right.</p>
+    </div>
+</div>
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 2rem; max-width: 900px;">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2rem; min-height: 70vh;">
-                <h2 class="mb-4 text-center">The Migration of Early Saints</h2>
-                <div class="w-100 d-flex justify-content-center">
+            <div style="padding: 2rem; min-height: 70vh;">
+                <h2 class="mb-4">The Migration of Early Saints</h2>
+                <div>
                     {{ saint_lines_html|safe }}
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2rem; min-height: 70vh;">
-                <h2 class="mb-4 text-center">Births by Region</h2>
-                <div class="w-100 d-flex justify-content-center">
+            <div style="padding: 2rem; min-height: 70vh;">
+                <h2 class="mb-4">Births by Region</h2>
+                <div>
                     {{ births_pie_html|safe }}
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <div class="d-flex flex-column justify-content-center align-items-center" style="padding: 2rem; min-height: 70vh;">
-                <h2 class="mb-4 text-center">Deaths by Region</h2>
-                <div class="w-100 d-flex justify-content-center">
+            <div style="padding: 2rem; min-height: 70vh;">
+                <h2 class="mb-4">Deaths by Region</h2>
+                <div>
                     {{ deaths_pie_html|safe }}
                 </div>
             </div>

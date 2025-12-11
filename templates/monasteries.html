@@ -1,7 +1,13 @@
 
 {% extends "base.html" %}
 {% block content %}
-<div id="monastery-map" style="width: 800px; height: 1600px; margin: 0 auto;">
+<div class="d-flex justify-content-start" style="margin-bottom: 2rem;">
+    <div style="background-color: linen; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 1.5rem 2rem; max-width: 420px;">
+        <h4 class="mb-2">What You See</h4>
+        <p style="margin-bottom: 0;">Each monastery on this map was founded in or around the twelfth century. All but one were founded explicitly by members of the nobility. Notice how they are all clustered around Edinburgh. Hover your mouse over a monastery to see biographical details. Click each monastery to see a Google Street View of the location as it stands today. </p>
+    </div>
+</div>
+<div id="monastery-map" style="width: 800px; height: 1600px;">
     {{ monastery_html|safe }}
 </div>
 {% endblock %}
