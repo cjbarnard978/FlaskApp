@@ -2,12 +2,17 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="d-flex justify-content-start" style="margin-bottom: 2rem;">
-    <div style="background-color: linen; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 1.5rem 2rem; max-width: 420px;">
-        <h4 class="mb-2">What You See</h4>
-        <p style="margin-bottom: 0;">Each monastery on this map was founded in or around the twelfth century. All but one were founded explicitly by members of the nobility. Notice how they are all clustered around Edinburgh. Hover your mouse over a monastery to see biographical details. Click each monastery to see a Google Street View of the location as it stands today. </p>
-    </div>
-</div>
-<div id="monastery-map" style="width: 800px; height: 1600px;">
-    {{ monastery_html|safe }}
-</div>
+        <div class="d-flex flex-row justify-content-center align-items-start" style="gap: 2rem; margin-bottom: 2rem;">
+            <div style="background-color: #e6f2ff; border-radius: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 1.5rem 2rem; max-width: 300px; min-width: 200px;">
+                <h4 class="mb-2">What You See</h4>
+                <p style="margin-bottom: 0;">Each monastery on this map was founded in or around the twelfth century. All but one were founded explicitly by members of the nobility. Notice how they are all clustered around Edinburgh. Hover your mouse over a monastery to see biographical details. Click each monastery to see a Google Street View of the location as it stands today.</p>
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
+                <h2 class="mb-4" style="text-align:center;">Seven 12th Century Scottish Monasteries</h2>
+                <div id="monastery-map" style="width: 100%; min-width: 900px; height: 1000px;">
+                    {{ monastery_html|safe }}
+                </div>
+            </div>
+            </div>
+        </div>
 {% endblock %}

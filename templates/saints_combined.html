@@ -1,13 +1,13 @@
 
 {% extends "base.html" %}
 {% block content %}
-<div class="d-flex justify-content-start" style="margin-bottom: 2rem;">
-    <div style="background-color: linen; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 1.5rem 2rem; max-width: 420px;">
+<div class="d-flex flex-row justify-content-center align-items-start" style="gap: 2rem; margin-bottom: 2rem;">
+    <div style="background-color: #e6f2ff; border-radius: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 1.5rem 2rem; max-width: 300px; min-width: 200px;">
         <h4 class="mb-2">What You See</h4>
-        <p style="margin-bottom: 0;">Click on a saint to compare their place of birth and place of death. Consider the difference in distance traveled between male saints and female saints. To see a statistical breakdown of birth and death regions, click the arrow on the right.</p>
+        <p style="margin-bottom: 0;">Compare the place of birth and place of death for these Irish and Scottish saints. Consider the difference in distance traveled between male saints and female saints. To see a statistical breakdown of birth and death regions, click the arrow on the right. To deselect a saint's data on the map, click their name on the legend.</p>
     </div>
-</div>
-<div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 2rem; max-width: 900px;">
+    <div style="flex: 1; display: flex; justify-content: center;">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" style="margin-bottom: 2rem; width: 100%; min-width: 600px; max-width: 1800px; min-height: 900px;">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div style="padding: 2rem; min-height: 70vh;">

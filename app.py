@@ -78,7 +78,7 @@ def saints_combined():
             zoom = 3
         ),
         showlegend = True,
-        title = "Migration of Irish and Scottish Saints"
+        title = ''
     )
     saint_lines_html = fig.to_html(full_html=False)
     # Bar charts
@@ -117,7 +117,7 @@ def monasteries():
         hoverinfo='text'
     ))
     fig.update_layout(
-        title='Seven 12th Century Scottish Monasteries',
+        title='',
         autosize=True,
         hovermode='closest',
         showlegend=False,
@@ -128,7 +128,7 @@ def monasteries():
                 lon=-3.1882
             ),
             pitch=0,
-            zoom=3,
+            zoom=6,
             style='open-street-map'
         ),
     )
