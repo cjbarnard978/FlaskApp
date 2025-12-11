@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container mt-5">
-	<h1 class="text-center">Welcome to My Flask App</h1>
-	<p class="text-center">This is the home page, wrapped with base.html.</p>
+<style>
+  body {
+    background-image: url("{{ url_for('static', filename='mapofscotland.png') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+</style>
+<div class="container mt-5 d-flex justify-content-center align-items-center" style="min-height: 40vh;">
+  <div style="background-color: linen; border-radius: 16px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); padding: 2rem 2.5rem; max-width: 900px; width: 100%;">
+    <h1 class="text-center" style="margin-bottom: 1.5rem;">Mission, Myth, and Monasticism: Religious Archetypes and Cultural Transmission between Gaelic Ireland and Scotland, 1200-1500</h1>
+    <p class="text-center">Welcome to the visualization page for "Mission, Myth, and Monasticism: Religious Archetypes and Cultural Transmission between Gaelic Ireland and Scotland, 1200-1500." This project uses Digital Humanities techniques to examine the spatiality of cultural exchange between Scotland and Gaelic Ireland, comparing early medieval conversion efforts with monastic correspondence in the 13th century until the Reformation.</p>
+  </div>
 </div>
 {% endblock %}
 
