@@ -35,7 +35,7 @@ app.py: Contains the python code to run all 4 visualizations housed in the app.
 static folder: contains the background image on the homepage and the .txt files for the text boxes throughout the site.
 
 templates folder:
-    base.html: contains the html code to control the navbar, background colors, fonts, and code to allow for it to be extended throughout the site. 
+    base.html: contains the html code to control the navbar, background colors, fonts, and code to allow for it to be extended throughout the site. Navbar and background colors were selected to correspond with the background image on home.html, which is a 16th century map of Scotland from the National Library of Scotland. Citation included in the Flask App Explainer. 
     home.html: contains the html code for the homepage, including the code to integrate the background image. base.html is extended on this template. 
     monasteries.html: contains the html code for the scatter map. Extends base.html
     saints_combined.html: contains the html code for the line map and both bar charts. base.html is extended on this template.
