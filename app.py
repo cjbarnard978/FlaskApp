@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import plotly.graph_objects as go
+import os
 import pandas as pd
 
 app = Flask(__name__)
@@ -36,6 +37,9 @@ def saints_combined():
         showlegend=True,
         hoverinfo='skip'
     ))
+
+    # Use relative path for interactivemonasterymap.csv
+    # monastery_df = pd.read_csv('interactivemonasterymap.csv')
     for _, row in df.iterrows():
         if pd.notna(row['Birth_Latitude']) and pd.notna(row['Death_Latitude']) and pd.notna(row['Birth_ Longitude']) and pd.notna(row['Death_Longitude']):
             # Line connecting birth and death
@@ -89,7 +93,8 @@ def saints_combined():
     births_fig.update_yaxes(range=[0, 5])
     death_counts = df['Death_Region'].value_counts().reset_index()
     death_counts.columns = ['Death_Region', 'Count']
-    deaths_fig = px.bar(death_counts, x='Death_Region', y='Count', title='Saint Deaths by Region', text='Count')
+    deaths_path = os.path.join(os.path.dirname(__file__), 'saints.csv')
+    df = pd.read_csv(deaths_path)
     deaths_fig.update_traces(textposition='outside')
     deaths_fig.update_yaxes(range=[0, 6])
     births_bar_html = births_fig.to_html(full_html=False)
